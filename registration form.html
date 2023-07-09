@@ -1,0 +1,20 @@
+// Perform registration logic here (e.g., send data to Google Forms)
+const registrationForm = document.getElementById('registrationForm');
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from submitting
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const mobile = document.getElementById('mobile').value;
+
+  // Perform validation
+  if (name.trim() === '' || email.trim() === '' || mobile.trim() === '') {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Redirect to the Google Forms link with pre-filled responses
+  const googleFormsLink = 'PASTE_YOUR_GOOGLE_FORMS_LINK_HERE'; // Replace with the copied Google Forms link
+  window.location.href = googleFormsLink + '&entry.<FIELD_ID_FOR_NAME>=' + encodeURIComponent(name) + '&entry.<FIELD_ID_FOR_EMAIL>=' + encodeURIComponent(email) + '&entry.<FIELD_ID_FOR_MOBILE>=' + encodeURIComponent(mobile);
+});
