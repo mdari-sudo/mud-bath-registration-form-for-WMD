@@ -1,3 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .bold {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mangrove Mud Bath Marathon 2023</h1>
+  <p>This registration form is for those willing to participate in the mangrove mud bath marathon. The main objective is to raise awareness on the importance of conserving the mangrove ecosystem.</p>
+  <p>Mombasa County has witnessed loss of mangroves forests through encroachment, shoreline erosion, pollution leading to reduce fish stocks, increased temperatures rendering the forest adjacent communities vulnerable to effects of climate change.</p>
+  <p>This mangrove mud bath marathon has been set up to raise funds so as to achieve 3 objectives:</p>
+  <ol>
+    <li>To set up beacons to highlight the shoreline of the forest</li>
+    <li>To restructure the community forest association who work together with the Kenya forest service as required by FCMA 2016 in the protection, conservation and management of the forest</li>
+    <li>To implement the National Mangrove Ecosystem Management Plan</li>
+  </ol>
+  <p>The marathon has been scheduled for <span class="bold">22nd July 2023</span> starting at <span class="bold">8 am</span> in the morning at <span class="bold">Makupa Roundabout</span> to <span class="bold">Mikindani</span> Mangrove area. For you to be part of this conservation effort, register below.</p>
+  <p>Registration is open to individuals (2 types) or as groups of 5 members in an organization or institutions. You can register as many groups as you wish for each category in each institution or organization. There are 3 categories: 7 Km, 5 Km, and 2 Km.</p>
+  <p>Welcome to this <span class="bold">FUN GAME</span> as you learn more about the importance of the conservation of the mangrove ecosystem.</p>
+  
+  <h2>Registration Type:</h2>
+  <div class="container">
+    <form id="registrationTypeForm">
+      <div class="form-group">
+        <label for="registrationType">Select Registration Type:</label>
+        <select id="registrationType" required>
+          <option value="">-- Select --</option>
+          <option value="individual">Individual</option>
+          <option value="institution">Institution</option>
+          <option value="organization">Organization</option>
+        </select>
+      </div>
+      <button type="submit">Next</button>
+    </form>
+  </div>
+  
+  <div id="individualForm" class="container" style="display: none;">
+    <form id="individualRegistrationForm">
+      <h2>Individual Registration</h2>
+      <div class="form-group">
+        <label for="individualName">Name:</label>
+        <input type="text" id="individualName" required>
+      </div>
+      <div class="form-group">
+        <label for="individualEmail">Email:</label>
+        <input type="email" id="individualEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="individualMobile">Mobile Number:</label>
+        <input type="tel" id="individualMobile" required>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
+  <div id="institutionForm" class="container" style="display: none;">
+    <form id="institutionRegistrationForm">
+      <h2>Institution Registration</h2>
+      <div class="form-group">
+        <label for="institutionName">Institution Name:</label>
+        <input type="text" id="institutionName" required>
+      </div>
+      <div class="form-group">
+        <label for="institutionEmail">Email:</label>
+        <input type="email" id="institutionEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="institutionMobile">Mobile Number:</label>
+        <input type="tel" id="institutionMobile" required>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
+  <div id="organizationForm" class="container" style="display: none;">
+    <form id="organizationRegistrationForm">
+      <h2>Organization Registration</h2>
+      <div class="form-group">
+        <label for="organizationName">Organization Name:</label>
+        <input type="text" id="organizationName" required>
+      </div>
+      <div class="form-group">
+        <label for="organizationEmail">Email:</label>
+        <input type="email" id="organizationEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="organizationMobile">Mobile Number:</label>
+        <input type="tel" id="organizationMobile" required>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
+  <script>
+    // Get the form elements
+    const registrationTypeForm = document.getElementById('registrationTypeForm');
+    const individualForm = document.getElementById('individualForm');
+    const institutionForm = document.getElementById('institutionForm');
+    const organizationForm = document.getElementById('organizationForm');
+    
+    // Add event listener for registration type form submission
+    registrationTypeForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting
+      
+      // Get registration type value
+      const registrationType = document.getElementById('registrationType').value;
+      
+      // Show the respective form based on the selected registration type
+      if (registrationType === 'individual') {
+        individualForm.style.display = 'block';
+      } else if (registrationType === 'institution') {
+        institutionForm.style.display = 'block';
+      } else if (registrationType === 'organization') {
+        organizationForm.style.display = 'block';
+      }
+    });
+    
+    // Add event listener for individual registration form submission
+    const individualRegistrationForm = document.getElementById('individualRegistrationForm');
+    individualRegistrationForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting
+      
+      // Get form values
+      const individualName = document.getElementById('individualName').value;
+      const individualEmail = document.getElementById('individualEmail').value;
+      const individualMobile = document.getElementById('individualMobile').value;
+      
+      // Perform validation
+      if (individualName.trim() === '' || individualEmail.trim() === '' || individualMobile.trim() === '') {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Perform registration logic here (// Perform registration logic here (e.g., send data to Google Forms)
+const registrationForm = document.getElementById('registrationForm');
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from submitting
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const mobile = document.getElementById('mobile').value;
+
+  // Perform validation
+  if (name.trim() === '' || email.trim() === '' || mobile.trim() === '') {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Send form data to Google Forms
+  const googleFormsEndpoint = 'https://forms.gle/1tBYZQK5aq9BHvZm8'; // Replace with the Google Forms link
+  const formData = new FormData();
+  formData.append('entry.<FIELD_ID_FOR_NAME>', name);
+  formData.append('entry.<FIELD_ID_FOR_EMAIL>', email);
+  formData.append('entry.<FIELD_ID_FOR_MOBILE>', mobile);
+
+  fetch(googleFormsEndpoint, {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
+      if (response.ok) {
+        alert('Registration successful!');
+        registrationForm.reset();
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    })
+    .catch(function(error) {
+      alert('An error occurred. Please try again.');
+      console.error(error);
+    });
+});
 // Perform registration logic here (e.g., send data to Google Forms)
 const registrationForm = document.getElementById('registrationForm');
 registrationForm.addEventListener('submit', function(event) {
@@ -14,7 +237,251 @@ registrationForm.addEventListener('submit', function(event) {
     return;
   }
 
-  // Redirect to the Google Forms link with pre-filled responses
-  const googleFormsLink = 'PASTE_YOUR_GOOGLE_FORMS_LINK_HERE'; // Replace with the copied Google Forms link
-  window.location.href = googleFormsLink + '&entry.<FIELD_ID_FOR_NAME>=' + encodeURIComponent(name) + '&entry.<FIELD_ID_FOR_EMAIL>=' + encodeURIComponent(email) + '&entry.<FIELD_ID_FOR_MOBILE>=' + encodeURIComponent(mobile);
+  // Send form data to Google Forms
+  const googleFormsEndpoint = 'https://forms.gle/1tBYZQK5aq9BHvZm8'; // Replace with the Google Forms link
+  const formData = new FormData();
+  formData.append('entry.<FIELD_ID_FOR_NAME>', name);
+  formData.append('entry.<FIELD_ID_FOR_EMAIL>', email);
+  formData.append('entry.<FIELD_ID_FOR_MOBILE>', mobile);
+
+  fetch(googleFormsEndpoint, {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
+      if (response.ok) {
+        alert('Registration successful!');
+        registrationForm.reset();
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    })
+    .catch(function(error) {
+      alert('An error occurred. Please try again.');
+      console.error(error);
+    });
 });
+)
+      // You can use AJAX, fetch, or any other method to send the data
+      
+      // Clear the form
+      individualRegistrationForm.reset();
+      
+      // Display success message
+      alert('Individual registration successful!');
+    });
+    
+    // Add event listener for institution registration form submission
+    const institutionRegistrationForm = document.getElementById('institutionRegistrationForm');
+    institutionRegistrationForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting
+      
+      // Get form values
+      const institutionName = document.getElementById('institutionName').value;
+      const institutionEmail = document.getElementById('institutionEmail').value;
+      const institutionMobile = document.getElementById('institutionMobile').value;
+      
+      // Perform validation
+      if (institutionName.trim() === '' || institutionEmail.trim() === '' || institutionMobile.trim() === '') {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Perform registration logic here (// Perform registration logic here (e.g., send data to Google Forms)
+const registrationForm = document.getElementById('registrationForm');
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from submitting
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const mobile = document.getElementById('mobile').value;
+
+  // Perform validation
+  if (name.trim() === '' || email.trim() === '' || mobile.trim() === '') {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Send form data to Google Forms
+  const googleFormsEndpoint = 'https://forms.gle/1tBYZQK5aq9BHvZm8'; // Replace with the Google Forms link
+  const formData = new FormData();
+  formData.append('entry.<FIELD_ID_FOR_NAME>', name);
+  formData.append('entry.<FIELD_ID_FOR_EMAIL>', email);
+  formData.append('entry.<FIELD_ID_FOR_MOBILE>', mobile);
+
+  fetch(googleFormsEndpoint, {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
+      if (response.ok) {
+        alert('Registration successful!');
+        registrationForm.reset();
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    })
+    .catch(function(error) {
+      alert('An error occurred. Please try again.');
+      console.error(error);
+    });
+});
+// Perform registration logic here (e.g., send data to Google Forms)
+const registrationForm = document.getElementById('registrationForm');
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from submitting
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const mobile = document.getElementById('mobile').value;
+
+  // Perform validation
+  if (name.trim() === '' || email.trim() === '' || mobile.trim() === '') {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Send form data to Google Forms
+  const googleFormsEndpoint = 'https://forms.gle/1tBYZQK5aq9BHvZm8'; // Replace with the Google Forms link
+  const formData = new FormData();
+  formData.append('entry.<FIELD_ID_FOR_NAME>', name);
+  formData.append('entry.<FIELD_ID_FOR_EMAIL>', email);
+  formData.append('entry.<FIELD_ID_FOR_MOBILE>', mobile);
+
+  fetch(googleFormsEndpoint, {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
+      if (response.ok) {
+        alert('Registration successful!');
+        registrationForm.reset();
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    })
+    .catch(function(error) {
+      alert('An error occurred. Please try again.');
+      console.error(error);
+    });
+});
+)
+      // You can use AJAX, fetch, or any other method to send the data
+      
+      // Clear the form
+      institutionRegistrationForm.reset();
+      
+      // Display success message
+      alert('Institution registration successful!');
+    });
+    
+    // Add event listener for organization registration form submission
+    const organizationRegistrationForm = document.getElementById('organizationRegistrationForm');
+    organizationRegistrationForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting
+      
+      // Get form values
+      const organizationName = document.getElementById('organizationName').value;
+      const organizationEmail = document.getElementById('organizationEmail').value;
+      const organizationMobile = document.getElementById('organizationMobile').value;
+      
+      // Perform validation
+      if (organizationName.trim() === '' || organizationEmail.trim() === '' || organizationMobile.trim() === '') {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Perform registration logic here (// Perform registration logic here (e.g., send data to Google Forms)
+const registrationForm = document.getElementById('registrationForm');
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from submitting
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const mobile = document.getElementById('mobile').value;
+
+  // Perform validation
+  if (name.trim() === '' || email.trim() === '' || mobile.trim() === '') {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Send form data to Google Forms
+  const googleFormsEndpoint = 'https://forms.gle/1tBYZQK5aq9BHvZm8'; // Replace with the Google Forms link
+  const formData = new FormData();
+  formData.append('entry.<FIELD_ID_FOR_NAME>', name);
+  formData.append('entry.<FIELD_ID_FOR_EMAIL>', email);
+  formData.append('entry.<FIELD_ID_FOR_MOBILE>', mobile);
+
+  fetch(googleFormsEndpoint, {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
+      if (response.ok) {
+        alert('Registration successful!');
+        registrationForm.reset();
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    })
+    .catch(function(error) {
+      alert('An error occurred. Please try again.');
+      console.error(error);
+    });
+});
+// Perform registration logic here (e.g., send data to Google Forms)
+const registrationForm = document.getElementById('registrationForm');
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from submitting
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const mobile = document.getElementById('mobile').value;
+
+  // Perform validation
+  if (name.trim() === '' || email.trim() === '' || mobile.trim() === '') {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Send form data to Google Forms
+  const googleFormsEndpoint = 'https://forms.gle/1tBYZQK5aq9BHvZm8'; // Replace with the Google Forms link
+  const formData = new FormData();
+  formData.append('entry.<FIELD_ID_FOR_NAME>', name);
+  formData.append('entry.<FIELD_ID_FOR_EMAIL>', email);
+  formData.append('entry.<FIELD_ID_FOR_MOBILE>', mobile);
+
+  fetch(googleFormsEndpoint, {
+    method: 'POST',
+    body: formData
+  })
+    .then(function(response) {
+      if (response.ok) {
+        alert('Registration successful!');
+        registrationForm.reset();
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    })
+    .catch(function(error) {
+      alert('An error occurred. Please try again.');
+      console.error(error);
+    });
+});
+)
+      // You can use AJAX, fetch, or any other method to send the data
+      
+      // Clear the form
+      organizationRegistrationForm.reset();
+      
+      // Display success message
+      alert('Organization registration successful!');
+    });
+  </script>
+</body>
+</html>
